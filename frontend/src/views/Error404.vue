@@ -1,16 +1,14 @@
 <template>
   <div class="text-center">
-    <div class="text-primary-600 text-9xl font-bold my-5">404</div>
-    <div class="text-2xl text-gray-500 my-5">Oops. Page not found...</div>
-    <div class="flex flex-row justify-center space-x-4">
-      <button
+    <div class="text-primary text-h5 q-fw-600 q-my-5">404</div>
+    <div class="text-h6s text-gray-500 q-my-5">Oops. Page not found...</div>
+    <div class="flex flex-row justify-center q-gap-4">
+      <q-btn color="primary"
         @click="routerGo(-1)"
-        class="btn btn-primary my-5"
-      >Back</button>
-      <button
+      >Back</q-btn>
+      <q-btn color="secondary"
         @click="routerPush('/')"
-        class="btn btn-secondary my-5"
-      >Home</button>
+      >Home</q-btn>
     </div>
   </div>
 </template>

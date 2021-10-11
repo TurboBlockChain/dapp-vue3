@@ -33,7 +33,7 @@ export default defineComponent({
   </div>
   <div
     v-else
-    class="text-center text-xl text-red-500 p-4"
+    class="text-center text-h5 text-red-500 q-p-4"
   >
     <p>You are connected to the wrong chain. Please switch to {{ supportedChainName }}.</p>
   </div>

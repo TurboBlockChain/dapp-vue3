@@ -1,28 +1,39 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "./views/Home.vue";
-import Deploy from "./views/Deploy.vue";
-import Contract from "./views/Contract.vue";
-
+import Layout from '@/components/Layout.vue';
 // For info on using Vue Router with the Composition API, see https://next.router.vuejs.org/guide/advanced/composition-api.html
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/deploy",
-    name: "Deploy",
-    component: Deploy,
-  },
-  {
-    path: "/contract",
-    name: "Contract",
-    component: Contract,
+    redirect: '/greeting/home',
+    component: Layout,
+    children: [
+      {
+        path: "/greeting",
+        redirect: '/greeting/home',
+        component: Layout,
+        children: [
+          {
+            path: '/greeting/home',
+            name: "greeting-home",
+            component: () =>import('@/views/greeting/Home.vue'),
+          },
+          {
+            path: "/greeting/deploy",
+            name: "greeting-deploy",
+            component: () =>import('@/views/greeting/Deploy.vue'),
+          },
+          {
+            path: "/greeting/contract",
+            name: "greeting-contract",
+            component: () =>import('@/views/greeting/Contract.vue'),
+          },
+        ]
+      },
+    ]
   },
   // Fallback route for handling 404s
-  { path: "/:pathMatch(.*)*", name: "404", component: () => import("./views/Error404.vue") },
+  { path: "/:pathMatch(.*)*", name: "404", component: () => import("@/views/Error404.vue") },
 ];
 
 const router = createRouter({

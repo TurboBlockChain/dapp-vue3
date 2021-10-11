@@ -1,14 +1,14 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import useMetaMask from "../composables/metamask";
-import { useGetGreeting, useGreeterContract } from "../composables/greeter";
+import useMetaMask from "@/composables/metamask";
+import { useGetGreeting, useGreeterContract } from "@/composables/greeter";
 import { Greeter as IGreeter } from "@dapp-vue3/contracts/typechain/Greeter";
-import useGreeterStore from "../store/greeter";
-import Greeter from "../components/Greeter.vue";
+import useGreeterStore from "@/store/greeter";
+import Greeter from "@/components/Greeter.vue";
 
 export default defineComponent({
   components: { Greeter },
-  name: "Contract",
+  name: "greeting-contract",
   setup() {
     const { etherBalance, connectError } = useMetaMask();
     const { connectContractAt } = useGreeterContract();
@@ -57,37 +57,37 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="text-center text-warm-gray-600">
-    <p class="text-red-600">{{ connectError }}</p>
-    <p class="text-xl">Connect to your own Greeter contract</p>
+  <div class="text-center text-gray-6">
+    <p class="text-red-6">{{ connectError }}</p>
+    <p class="text-body1">Connect to your own Greeter contract</p>
     <p>ETH: {{ etherBalance }}</p>
   </div>
 
   <div class="flex justify-center">
-    <div class="p-8 pb-4 sm:w-8/12 md:w-1/2 lg:w-5/12">
+    <div class="q-pa-8 q-pb-4">
       <label
         for="ContractAddress"
-        class="block mt-2 text-xs font-semibold text-gray-600 uppercase"
+        class="block q-mt-2 text-subtitle1 text-weight-medium text-gray-6"
       >Contract Address</label>
       <div class="flex justify-between">
-        <input
+        <q-input
           v-model="addressInput"
           id="ContractAddress"
           type="ContractAddress"
           name="ContractAddress"
+          dense
+          outlined
           placeholder="0x..."
           autocomplete="ContractAddress"
-          class="w-full p-3 mt-2 mr-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
           required
         />
-        <button
+        <q-btn
           @click="connectContractBtn()"
-          class="btn mt-2"
-        >Connect</button>
+        >Connect</q-btn>
       </div>
     </div>
   </div>
-  <p class="p-4 text-center text-red-600"> {{ errMsg }} </p>
+  <p class="q-pa-4 text-center text-red-6"> {{ errMsg }} </p>
 
   <!-- Greeter Contracts -->
   <div

@@ -33,35 +33,36 @@ export default defineComponent({
 
 
 <template>
-  <div class="grid place-items-center">
-    <div class="w-full border shadow p-8 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12">
-      <div class="text-center p-2">
+  <div class="flex flex-center">
+    <div>
+      <div class="text-center q-pa-2">
         {{ displayAddress(greeterData?.address ?? "") }}
         <p>Greeting: {{ greeterData?.greeting }}</p>
       </div>
 
       <div class="flex justify-between gap-3">
-        <span class="w-full">
+        <span class="full-width">
           <label
             :for="greeterData?.address"
-            class="block text-xs font-semibold text-gray-600 uppercase"
+            class="block text-subtitle1 text-weight-medium text-gray-6"
           >Greeting</label>
-          <input
+          <q-input
             :id="greeterData?.address"
+            dense
+            outlined
             name="Greeting"
             placeholder="Hello World"
             v-model="greetingInput"
             type="text"
-            class="block w-full p-3 mt-2 text-gray-700 bg-gray-100 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             required
-          >
+          />
         </span>
       </div>
-      <button
+      <q-btn
         @click="setGreetingBtn()"
-        class="btn w-full my-4"
+        class="q-my-4"
         :disabled="isPending"
-      >{{ isPending ? "pending" : "setGreeting" }}</button>
+      >{{ isPending ? "pending" : "setGreeting" }}</q-btn>
     </div>
 
     <p class="p-4 text-center text-red-600"> {{ errMsg }} </p>

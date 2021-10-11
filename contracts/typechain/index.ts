@@ -3,3 +3,5 @@
 /* eslint-disable */
 export { GreeterFactory } from "./GreeterFactory";
 export type { Greeter } from "./Greeter";
+export { TokenFactory } from "./TokenFactory";
+export type { Token } from "./Token";

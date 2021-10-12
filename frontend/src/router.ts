@@ -30,6 +30,28 @@ const routes: Array<RouteRecordRaw> = [
           },
         ]
       },
+      {
+        path: "/token",
+        redirect: '/token/home',
+        component: Layout,
+        children: [
+          {
+            path: '/token/home',
+            name: "token-home",
+            component: () =>import('@/views/token/Home.vue'),
+          },
+          {
+            path: "/token/deploy",
+            name: "token-deploy",
+            component: () =>import('@/views/token/Deploy.vue'),
+          },
+          {
+            path: "/token/contract",
+            name: "token-contract",
+            component: () =>import('@/views/token/Contract.vue'),
+          },
+        ]
+      },
     ]
   },
   // Fallback route for handling 404s

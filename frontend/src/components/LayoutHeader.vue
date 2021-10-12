@@ -7,6 +7,7 @@ const tabList = [
   {
     name: 'Greeting',
     label: 'Greeting',
+    href: "/greeting/home",
     navigation : [
       { name: "Home", href: "/greeting/home" },
       { name: "Deploy", href: "/greeting/deploy" },
@@ -16,6 +17,7 @@ const tabList = [
   {
     name: 'Token',
     label: 'Token',
+    href: "/token/home",
     navigation : [
       { name: "Home", href: "/token/home" },
       { name: "Deploy", href: "/token/deploy" },
@@ -68,7 +70,7 @@ export default defineComponent({
       </router-link>
       <q-space />
       <q-tabs v-model="tab" shrink stretch>
-        <q-tab :name="item.name" :label="item.label" v-for="item in tabList" :key="item.name"/>
+        <q-tab :name="item.name" :label="item.label" v-for="item in tabList" :key="item.name" @click="$router.push(item.href)"/>
       </q-tabs>
       <div class="flex items-center">
         <div

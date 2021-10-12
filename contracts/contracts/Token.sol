@@ -13,6 +13,7 @@ contract Token {
     string public symbol = "MBT";
 
     // The fixed amount of tokens stored in an unsigned integer type variable.
+    // 1 Ether = 10**9 Gwei = 10**18 wei
     uint256 public totalSupply = 1000000;
 
     // An address type variable is used to store ethereum accounts.
